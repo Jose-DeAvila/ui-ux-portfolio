@@ -4,15 +4,19 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Maitee Batista - UI/UX Designer</title>
+		<meta name="description" content="UI/UX Designer creating intuitive and beautiful digital experiences." />
+		<meta name="author" content="Maitee Batista" />
+		<meta name="keywords" content="UI/UX Designer, Maitee Batista, UI/UX, Designer, Digital Experience, Interactive Design, User Experience, User Interface, Design, Portfolio" />
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	@import "tailwindcss";
+
 	html,
 	body {
 		margin: 0;
