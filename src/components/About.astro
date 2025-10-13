@@ -1,0 +1,55 @@
+---
+import Image from "astro/components/Image.astro";
+import Photo from "../assets/photo.png";
+---
+
+<section id="about" class="py-20 bg-black">
+	<div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="mb-8">
+			<h2 class="text-6xl font-bold mb-3 w-1/3">ABOUT MAITEE</h2>
+			<p class="text-small-circle">
+				FROM STO. DOMINGO - OFERRING GREAT UI/UX EXPERIENCES
+			</p>
+		</div>
+		<div class="flex gap-6">
+			<Image
+				class="w-1/2 object-cover rounded-2xl"
+				loading="lazy"
+				src={Photo}
+				alt="A photo of Maitee Batista smiling gently, dressed in a white tie-front shirt and a circular necklace, seated at a wooden table on a softly lit terrace in the evening."
+			/>
+			<div class="text-2xl flex flex-col gap-12">
+				<div>
+					<h4 class="font-bold mb-6">ABOUT ME</h4>
+					<p>
+						As a designer, my vision spans the entire creative
+						spectrum. I'm dedicated to bringing projects to life
+						that not only look exceptional but also achieve their
+						strategic objectives. With a deep understanding of how
+						design influences perception and interaction, I strive
+						to create work that creates a meaningful impact and
+						leaves a lasting mark.
+					</p>
+				</div>
+				<div>
+					<h4 class="mb-6 font-bold">CERTIFICATIONS</h4>
+					<ul class="list-disc pl-8">
+						<li>Web Assistant</li>
+						<li>UX Design: UX/UI User Experience + Figma 2024</li>
+						<li>User Experience (UX) Designer</li>
+					</ul>
+				</div>
+				<div>
+					<h4 class="mb-6 font-bold">MY MISION</h4>
+					<p>
+						As a designer, my mission is to deliver excellence in
+						every project, blending creativity with strategy. I
+						constantly seek to innovate and refine so that each
+						design not only fulfills its functional purpose but also
+						elevates the perception and value of what it represents.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

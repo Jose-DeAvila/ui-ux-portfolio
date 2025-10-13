@@ -1,0 +1,77 @@
+---
+import Image from "astro/components/Image.astro";
+import SetupImage from "../assets/setup.jpg";
+---
+
+<section class="bg-black mx-auto px-4 sm:px-6 lg:px-8 py-12">
+	<div class="flex justify-between mb-6">
+		<div class="w-1/2">
+			<p class="my-3">EVERY PROJECT STARTS WITH A GOOD IDEA</p>
+			<h1 class="text-9xl font-bold">
+				UI/UX <span class="designer-text">DESIGNER</span>
+			</h1>
+		</div>
+		<div class="w-1/2 uppercase flex flex-col align-bottom justify-between">
+			<div class="w-3/4 self-end">
+				<p>
+					I design authentic brands and functional interfaces with
+					intention.
+				</p>
+				<p>
+					Every project is an opportunity to connect ideas with people
+					through clear, aesthetic, and memorable digital experiences.
+				</p>
+			</div>
+			<a href="#projects" class="self-end underline mr-8"
+				>See all projects</a
+			>
+		</div>
+	</div>
+	<div>
+		<Image
+			src={SetupImage}
+			class="mb-6"
+			loading="lazy"
+			alt="Minimalist workspace with a MacBook laptop showing a clean interface, ideal for UI/UX design, on a wooden desk next to an indoor plant and natural light coming in through the window."
+		/>
+		<p class="flex flex-col">
+			<span class="font-black"
+				>Strategic design for purpose-driven brands and real users.
+			</span>
+			<span
+				>Clean, intuitive, and visually compelling digital experiences.
+			</span>
+		</p>
+	</div>
+</section>
+
+<style>
+	.designer-text {
+		position: relative;
+		z-index: 1;
+	}
+
+	.designer-text::after {
+		content: "";
+		position: absolute;
+		top: 8px;
+		right: -16px;
+		width: 64px;
+		height: 64px;
+		background-color: var(--color-big-circle);
+		border-radius: 50%;
+		z-index: -1;
+	}
+
+	.designer-text::before {
+		content: "";
+		position: absolute;
+		top: -24px;
+		right: -32px;
+		width: 32px;
+		height: 32px;
+		background-color: var(--color-small-circle);
+		border-radius: 50%;
+		z-index: -1;
+	}
+</style>

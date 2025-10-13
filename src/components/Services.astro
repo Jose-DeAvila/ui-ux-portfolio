@@ -1,0 +1,66 @@
+---
+import Image from "astro/components/Image.astro";
+import Girl from "../assets/girl.jpeg";
+import Objects from "../assets/objects-hp.jpg";
+---
+
+<section id="services" class="py-20 bg-black">
+	<div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="w-3/4 mb-14">
+			<h2 class="text-6xl text-bold mb-3">SERVICES</h2>
+			<p class="text-2xl font-bold uppercase">
+				It all starts with in-depth research and creative
+				experimentation. Bringing ideas to life and developing solutions
+				that truly connect with your users' needs.
+			</p>
+		</div>
+		<div class="flex justify-between">
+			<ul class="list-disc ml-9 w-2/5">
+				<li class="text-3xl mb-14">
+					<h3 class="mb-4 font-bold">UI/UX DESIGN</h3>
+					<p class="text-2xl mb-8">
+						We create intuitive and engaging user experiences that
+						seamlessly guide your audience.
+					</p>
+					<p class="text-small-circle mb-8 text-2xl">Key Features</p>
+					<ul class="text-2xl">
+						<li>- Interactive Prototyping (Web & Mobile)</li>
+						<li>- Interface Design (UI)</li>
+						<li>- Usability Testing</li>
+						<li>- Design Systems</li>
+					</ul>
+				</li>
+				<li class="text-3xl mb-14">
+					<h3 class="mb-4 font-bold">BRANDING AND VISUAL IDENTITY</h3>
+					<p class="text-2xl mb-8">
+						We build memorable and coherent brands that connect
+						emotionally and project your unique value.
+					</p>
+					<p class="text-small-circle mb-8 text-2xl">Key Features</p>
+					<ul class="text-2xl">
+						<li>- Logo Design</li>
+						<li>- Brand Guidelines</li>
+						<li>- Brand Strategy</li>
+						<li>- Brand Materials</li>
+					</ul>
+				</li>
+				<li class="text-3xl mb-14">
+					<h3 class="mb-4 font-bold">WEB AND DIGITAL DESIGN</h3>
+					<p class="text-2xl mb-8">
+						We develop professional-looking digital solutions that
+						are optimized for conversion and experience.
+					</p>
+					<p class="text-small-circle mb-8 text-2xl">Key Features</p>
+					<ul class="text-2xl">
+						<li>- Web Page Design</li>
+						<li>- Landing Page Design</li>
+						<li>- Responsive Websites</li>
+						<li>- Banners and Digital Graphics</li>
+					</ul>
+				</li>
+			</ul>
+			<Image src={Girl} class="object-cover" alt={""} />
+		</div>
+		<Image src={Objects} alt={""} />
+	</div>
+</section>

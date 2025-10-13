@@ -1,0 +1,119 @@
+---
+import Image from "astro/components/Image.astro";
+import Street from "../assets/street.jpeg";
+import Library from "../assets/library.jpg";
+import Tapes from "../assets/tapes.jpg";
+import OldTapes from "../assets/old-tapes.jpg";
+---
+
+<section class="py-20 bg-black max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+	<div class="uppercase text-center mb-9">
+		<h2 class="text-6xl font-bold mb-6">The creative process</h2>
+		<h4 class="text-4xl font-bold">
+			Where strategy meets creativity for exceptional results
+		</h4>
+	</div>
+	<div class="flex gap-12 items-center mb-12">
+		<Image
+			src={Street}
+			class="object-cover w-1/2 rounded-2xl"
+			alt="A painting of a vibrant streetscape full of signs and storefronts, symbolizing the Planning and Discovery phase, which involves observing and analyzing the environment to gather key information."
+		/>
+		<div>
+			<h5 class="text-2xl font-bold mb-4">01</h5>
+			<h4 class="text-2xl font-bold mb-4">PLANNING AND DISCOVERY</h4>
+			<p class="text-[20px] mb-4">
+				Before starting, we delve into your needs. We explore your
+				goals, the problem we're seeking to solve, and the desired
+				impact of your new design. This step is critical to ensure we're
+				aligned and that I can offer you the most effective solution.
+			</p>
+			<ul class="list-disc pl-8 text-[20px]">
+				<li>
+					We get to know each other better and establish a connection.
+				</li>
+				<li>We identify how I can best support you.</li>
+				<li>
+					We thoroughly understand the project's goals and vision.
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="flex gap-12 items-center mb-12 flex-row-reverse">
+		<Image
+			src={Library}
+			class="object-cover w-1/2 rounded-2xl"
+			alt="A painting of a vibrant streetscape full of signs and storefronts, symbolizing the Planning and Discovery phase, which involves observing and analyzing the environment to gather key information."
+		/>
+		<div>
+			<h5 class="text-2xl font-bold mb-4">02</h5>
+			<h4 class="text-2xl font-bold mb-4">CONCEPT AND STRATEGY</h4>
+			<p class="text-[20px] mb-4">
+				Once your requirements and goals are defined, we move on to the
+				conceptualization and strategy phase. Here, we outline the
+				overall vision and strategic approach for your design project.
+				This is the time to come up with creative and functional
+				solutions.
+			</p>
+			<ul class="list-disc pl-8 text-[20px]">
+				<li>Research and analysis (users, market, competition).</li>
+				<li>Development of central ideas and creative direction.</li>
+				<li>
+					Definition of information architecture and flows (if
+					applicable to digital).
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="flex gap-12 items-center mb-12">
+		<Image
+			src={Tapes}
+			class="object-cover w-1/2 rounded-2xl"
+			alt="A painting of a vibrant streetscape full of signs and storefronts, symbolizing the Planning and Discovery phase, which involves observing and analyzing the environment to gather key information."
+		/>
+		<div>
+			<h5 class="text-2xl font-bold mb-4">03</h5>
+			<h4 class="text-2xl font-bold mb-4">DESIGN AND DEVELOPMENT</h4>
+			<p class="text-[20px] mb-4">
+				With a clear strategy, we transform the concept into reality.
+				This phase involves the visual and functional execution of the
+				design, working on every detail to ensure the final result is
+				exceptional and meets the stated objectives.
+			</p>
+			<ul class="list-disc pl-8 text-[20px]">
+				<li>
+					Creation of visual elements (graphics, illustrations, UI)
+				</li>
+				<li>Development of prototypes and mockups (if applicable).</li>
+				<li>Iteration and refinement based on feedback.</li>
+			</ul>
+		</div>
+	</div>
+	<div class="flex gap-12 items-center mb-12 flex-row-reverse">
+		<Image
+			src={OldTapes}
+			class="object-cover w-1/2 rounded-2xl"
+			alt="A painting of a vibrant streetscape full of signs and storefronts, symbolizing the Planning and Discovery phase, which involves observing and analyzing the environment to gather key information."
+		/>
+		<div>
+			<h5 class="text-2xl font-bold mb-4">04</h5>
+			<h4 class="text-2xl font-bold mb-4">
+				IMPLEMENTATION AND OPTIMIZATION
+			</h4>
+			<p class="text-[20px] mb-4">
+				Once the design is finalized and approved, we focus on its
+				proper implementation and ensuring optimal performance. My work
+				isn't done until your design is live and functioning
+				effectively, ready to impact your audience.
+			</p>
+			<ul class="list-disc pl-8 text-[20px]">
+				<li>Preparation of final files and specifications.</li>
+				<li>Advice for implementation (if applicable).</li>
+				<li>
+					Evaluation and possible post-launch adjustments for
+					optimization.
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

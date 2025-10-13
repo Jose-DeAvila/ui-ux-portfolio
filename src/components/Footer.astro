@@ -1,0 +1,58 @@
+---
+import Image from "astro/components/Image.astro";
+import MaiLogo from "../assets/maii.png";
+---
+
+<footer id="contact" class="bg-black">
+	<div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
+		<div class="flex">
+			<div class="w-2/3 text-center flex flex-col items-center">
+				<h2 class="text-6xl mb-3">
+					WE CREATE INCREDIBLE EXPERIENCES TOGETHER
+				</h2>
+				<p class="text-2xl w-3/4 mb-6">
+					Let's transform your ideas together into intuitive,
+					functional, and aesthetically captivating digital solutions.
+				</p>
+				<a
+					href="#contact"
+					class="text-[20px] mb-16 text-black bg-white py-2 px-4 rounded-2xl hover:scale-105 transition-transform block w-fit font-bold"
+				>
+					Contact Now
+				</a>
+				<div class="flex gap-12">
+					<a class="underline" href="">Facebook</a>
+					<a class="underline" href="">Instagram</a>
+					<a class="underline" href="">LinkedIn</a>
+				</div>
+			</div>
+			<Image src={MaiLogo} class="logotype object-contain" alt={""} />
+		</div>
+	</div>
+</footer>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const animationClass = ["animate-fade-in-left", "animate-delay-500"];
+		const elementToAnimate = document.querySelector(".logotype");
+
+		const observerOptions = {
+			root: null,
+			rootMargin: "-20% 0px 0px 0px",
+			treshold: 0.1,
+		};
+
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const element = entry.target;
+					element.classList.add(...animationClass);
+
+					observer.unobserve(element);
+				}
+			});
+		}, observerOptions);
+
+		elementToAnimate && observer.observe(elementToAnimate);
+	});
+</script>

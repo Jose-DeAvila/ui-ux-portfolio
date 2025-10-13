@@ -1,0 +1,90 @@
+---
+import Image from "astro/components/Image.astro";
+import GirlWithStar from "../assets/girl-with-star.jpeg";
+import Figma from "../assets/figma.svg";
+import Framer from "../assets/framer.svg";
+import Canva from "../assets/canva.svg";
+import Harry from "../assets/harry.jpg";
+---
+
+<section class="py-20 bg-black">
+	<div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="mb-8">
+			<h2 class="text-6xl font-bold w-1/4 mb-3">FAVOURITE STACK</h2>
+			<p class="text-2xl">ESSENTIAL TOOLS FOR UI/UX DESIGN</p>
+		</div>
+		<div class="flex mb-12">
+			<div class="w-1/2">
+				<Image src={GirlWithStar} alt={""} class="w-2/3" />
+			</div>
+			<div class="w-1/2 flex flex-col gap-12">
+				<div class="flex">
+					<Image
+						class="max-h-14 w-fit px-3"
+						src={Figma}
+						alt="Figma Logotype"
+					/>
+					<div>
+						<div class="mb-6">
+							<h4 class="font-bold text-2xl mb-1">FIGMA</h4>
+							<p class="font-semibold italic text-[20px]">
+								UI/UX DESIGN | DESIGN SYSTEMS
+							</p>
+						</div>
+						<p class="text-2xl">
+							Complete mastery of interface design, the creation
+							and management of robust design systems, and
+							real-time collaborative prototyping.
+						</p>
+					</div>
+				</div>
+				<div class="flex">
+					<Image
+						class="max-h-14 w-fit px-3"
+						src={Framer}
+						alt="Framer Logotype"
+					/>
+					<div>
+						<div class="mb-6">
+							<h4 class="font-bold text-2xl mb-1">FRAMER</h4>
+							<p class="font-semibold italic text-[20px]">
+								ADVANCED PROTOTYPING | WEB DEPLOYMENT
+							</p>
+						</div>
+						<p class="text-2xl">
+							Experience creating high-fidelity prototypes with
+							complex interactions and animations, including the
+							ability to transform designs into functional
+							websites.
+						</p>
+					</div>
+				</div>
+				<div class="flex">
+					<Image
+						class="max-h-14 w-fit px-3"
+						src={Canva}
+						alt="Canva Logotype"
+					/>
+					<div>
+						<div class="mb-6">
+							<h4 class="font-bold text-2xl mb-1">CANVA</h4>
+							<p class="font-semibold italic text-[20px]">
+								GRAPHIC DESIGN | VISUAL CONTENT
+							</p>
+						</div>
+						<p class="text-2xl">
+							Ability to quickly create visual materials,
+							impactful presentations, and supporting graphics for
+							projects and marketing.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<Image
+			src={Harry}
+			alt={""}
+			class="rounded-2xl max-h-full object-cover"
+		/>
+	</div>
+</section>
