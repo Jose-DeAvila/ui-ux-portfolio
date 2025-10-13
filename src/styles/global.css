@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+/* Add padding-top to body to compensate for fixed header */
+body {
+    padding-top: 88px; /* Adjust based on header height */
+}
+
+/* Responsive padding for different screen sizes */
+@media (max-width: 640px) {
+    body {
+        padding-top: 80px; /* Slightly less padding on mobile */
+    }
+}
