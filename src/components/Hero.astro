@@ -3,26 +3,36 @@ import Image from "astro/components/Image.astro";
 import SetupImage from "../assets/setup.jpg";
 ---
 
-<section class="bg-black mx-auto px-4 sm:px-6 lg:px-8 py-12">
-	<div class="flex justify-between mb-6">
-		<div class="w-1/2">
-			<p class="my-3">EVERY PROJECT STARTS WITH A GOOD IDEA</p>
-			<h1 class="text-9xl font-bold">
+<section
+	class="bg-black mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:pt-12 md:pb-16 lg:pt-16 lg:pb-20"
+>
+	<div class="flex flex-col lg:flex-row lg:justify-between mb-6 lg:mb-8">
+		<div class="w-full lg:w-1/2 mb-6 lg:mb-0">
+			<p class="my-3 text-sm md:text-base">
+				EVERY PROJECT STARTS WITH A GOOD IDEA
+			</p>
+			<h1
+				class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight"
+			>
 				UI/UX <span class="designer-text">DESIGNER</span>
 			</h1>
 		</div>
-		<div class="w-1/2 uppercase flex flex-col align-bottom justify-between">
-			<div class="w-3/4 self-end">
-				<p>
+		<div
+			class="w-full lg:w-1/2 uppercase flex flex-col lg:align-bottom lg:justify-between"
+		>
+			<div class="w-full lg:w-3/4 lg:self-end mb-6 lg:mb-0">
+				<p class="text-base md:text-lg lg:text-xl mb-4">
 					I design authentic brands and functional interfaces with
 					intention.
 				</p>
-				<p>
+				<p class="text-base md:text-lg lg:text-xl">
 					Every project is an opportunity to connect ideas with people
 					through clear, aesthetic, and memorable digital experiences.
 				</p>
 			</div>
-			<a href="#projects" class="self-end underline mr-8"
+			<a
+				href="#projects"
+				class="self-start lg:self-end underline text-sm md:text-base lg:mr-8"
 				>See all projects</a
 			>
 		</div>
@@ -30,11 +40,11 @@ import SetupImage from "../assets/setup.jpg";
 	<div>
 		<Image
 			src={SetupImage}
-			class="mb-6"
+			class="mb-6 w-full h-auto"
 			loading="lazy"
 			alt="Minimalist workspace with a MacBook laptop showing a clean interface, ideal for UI/UX design, on a wooden desk next to an indoor plant and natural light coming in through the window."
 		/>
-		<p class="flex flex-col">
+		<p class="flex flex-col gap-2 text-sm md:text-base lg:text-lg">
 			<span class="font-black"
 				>Strategic design for purpose-driven brands and real users.
 			</span>
@@ -54,10 +64,10 @@ import SetupImage from "../assets/setup.jpg";
 	.designer-text::after {
 		content: "";
 		position: absolute;
-		top: 8px;
-		right: -16px;
-		width: 64px;
-		height: 64px;
+		top: 4px;
+		right: -8px;
+		width: 32px;
+		height: 32px;
 		background-color: var(--color-big-circle);
 		border-radius: 50%;
 		z-index: -1;
@@ -66,12 +76,45 @@ import SetupImage from "../assets/setup.jpg";
 	.designer-text::before {
 		content: "";
 		position: absolute;
-		top: -24px;
-		right: -32px;
-		width: 32px;
-		height: 32px;
+		top: -12px;
+		right: -16px;
+		width: 16px;
+		height: 16px;
 		background-color: var(--color-small-circle);
 		border-radius: 50%;
 		z-index: -1;
+	}
+
+	/* Responsive adjustments for larger screens */
+	@media (min-width: 640px) {
+		.designer-text::after {
+			top: 6px;
+			right: -12px;
+			width: 48px;
+			height: 48px;
+		}
+
+		.designer-text::before {
+			top: -18px;
+			right: -24px;
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.designer-text::after {
+			top: 8px;
+			right: -16px;
+			width: 64px;
+			height: 64px;
+		}
+
+		.designer-text::before {
+			top: -24px;
+			right: -32px;
+			width: 32px;
+			height: 32px;
+		}
 	}
 </style>

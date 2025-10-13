@@ -42,8 +42,37 @@ import "@fontsource/inter";
 		line-height: 1.2;
 	}
 
+	/* Add padding-top to body to compensate for fixed header */
+	body {
+		padding-top: 100px; /* Compensate for header height */
+	}
+
+	/* Responsive padding for different screen sizes */
+	@media (max-width: 640px) {
+		body {
+			padding-top: 90px; /* Mobile header is slightly shorter */
+		}
+	}
+
+	@media (min-width: 641px) and (max-width: 1024px) {
+		body {
+			padding-top: 95px; /* Tablet padding */
+		}
+	}
+
+	@media (min-width: 1025px) {
+		body {
+			padding-top: 100px; /* Desktop padding */
+		}
+	}
+
 	section {
 		opacity: 0;
+	}
+
+	/* Ensure first section has proper spacing */
+	section:first-of-type {
+		margin-top: 0 !important;
 	}
 
 	/* Ensure dark mode is applied globally */
