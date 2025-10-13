@@ -1,26 +1,83 @@
+---
+import "@fontsource/inter";
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>Maitee Batista - UI/UX Designer</title>
-		<meta name="description" content="UI/UX Designer creating intuitive and beautiful digital experiences." />
+		<meta
+			name="description"
+			content="UI/UX Designer creating intuitive and beautiful digital experiences."
+		/>
 		<meta name="author" content="Maitee Batista" />
-		<meta name="keywords" content="UI/UX Designer, Maitee Batista, UI/UX, Designer, Digital Experience, Interactive Design, User Experience, User Interface, Design, Portfolio" />
+		<meta
+			name="keywords"
+			content="UI/UX Designer, Maitee Batista, UI/UX, Designer, Digital Experience, Interactive Design, User Experience, User Interface, Design, Portfolio"
+		/>
 	</head>
-	<body>
+	<body class="bg-black text-white">
 		<slot />
 	</body>
 </html>
 
 <style is:global>
 	@import "tailwindcss";
+	@plugin "@midudev/tailwind-animations";
+
+	@theme {
+		--font-sans: "Inter", sans-serif;
+		--color-small-circle: #95d5e7;
+		--color-big-circle: #95e7d7;
+	}
 
 	html,
 	body {
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		line-height: 1.2;
+	}
+
+	section {
+		opacity: 0;
+	}
+
+	/* Ensure dark mode is applied globally */
+	.dark {
+		color-scheme: dark;
 	}
 </style>
+
+<script>
+	const animationClass = "animate-fade-in-up";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const elementsToAnimate = document.querySelectorAll("section");
+
+		const observerOptions = {
+			root: null,
+			rootMargin: "-10% 0px 0px 0px", // Usar porcentajes también funciona y es más adaptable
+			threshold: 0.1,
+		};
+
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const element = entry.target;
+
+					element.classList.add(animationClass);
+
+					observer.unobserve(element);
+				}
+			});
+		}, observerOptions);
+
+		elementsToAnimate.forEach((element) => {
+			observer.observe(element);
+		});
+	});
+</script>
