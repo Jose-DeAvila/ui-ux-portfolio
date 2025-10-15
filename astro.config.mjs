@@ -1,13 +1,12 @@
-// @ts-check
-import { defineConfig } from "astro/config";
+// astro.config.mjs
 
+import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 
-// https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: "https://jose-deavila.github.io",
-  base: "/ui-ux-portfolio",
+  site: "https://maiteebatista.site",
+  base: "/",
 });
