@@ -1,5 +1,6 @@
 ---
 import "@fontsource/inter";
+import interLatin400 from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
 
 interface Props {
 	title?: string;
@@ -82,6 +83,9 @@ const websiteSchema = {
 		<meta name="theme-color" content="#000000" />
 		<meta name="color-scheme" content="dark" />
 		<meta name="format-detection" content="telephone=no" />
+
+		<!-- Preload primary font to collapse HTML → CSS → font critical chain -->
+		<link rel="preload" href={interLatin400} as="font" type="font/woff2" crossorigin="anonymous" />
 
 		<!-- Icons -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

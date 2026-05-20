@@ -103,6 +103,8 @@ import Objects from "../assets/objects-hp.jpg";
 				<Image
 					src={Girl}
 					class="object-cover w-full max-w-md lg:max-w-none h-64 md:h-80 lg:h-auto"
+					widths={[400, 700, 900]}
+					sizes="(min-width: 1024px) 60vw, (min-width: 640px) 28rem, 100vw"
 					alt="Editorial portrait of a young woman in soft natural light, illustrating the human-centered focus behind Maitee Batista's UI/UX and branding services."
 				/>
 			</div>
@@ -111,6 +113,8 @@ import Objects from "../assets/objects-hp.jpg";
 			<Image
 				src={Objects}
 				class="w-full h-auto"
+				widths={[480, 800, 1200, 1800]}
+				sizes="100vw"
 				alt="A flat-lay of design tools, sketchbooks, and accessories used in a UI/UX and branding workflow."
 			/>
 		</div>

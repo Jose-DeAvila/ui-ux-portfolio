@@ -7,6 +7,9 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://maiteebatista.site",
   base: "/",
+  build: {
+    inlineStylesheets: "always",
+  },
   integrations: [
     sitemap({
       changefreq: "monthly",
