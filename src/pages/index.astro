@@ -10,18 +10,22 @@ import Services from "../components/Services.astro";
 import Stack from "../components/Stack.astro";
 import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title =
+	"Maitee Batista | UI/UX Designer in Santo Domingo, Dominican Republic";
+const description =
+	"Portfolio of Maitee Batista, UI/UX designer in Santo Domingo. Intuitive interfaces, brand identity, and conversion-focused web design for purpose-driven brands. View projects in Figma and Framer.";
 ---
 
-<Layout>
+<Layout title={title} description={description}>
 	<Header />
-	<Hero />
-	<Projects />
-	<About />
-	<Process />
-	<Motivation />
-	<Services />
-	<Stack />
+	<main id="main">
+		<Hero />
+		<Projects />
+		<About />
+		<Process />
+		<Motivation />
+		<Services />
+		<Stack />
+	</main>
 	<Footer />
 </Layout>

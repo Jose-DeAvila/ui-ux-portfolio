@@ -1,25 +1,126 @@
 ---
 import "@fontsource/inter";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	canonical?: string;
+	noindex?: boolean;
+}
+
+const {
+	title = "Maitee Batista | UI/UX Designer in Santo Domingo, Dominican Republic",
+	description = "Maitee Batista is a UI/UX designer based in Santo Domingo, Dominican Republic, crafting intuitive interfaces, brand identities, and conversion-focused digital experiences for purpose-driven brands.",
+	image = "/og-image.png",
+	canonical,
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "https://maiteebatista.site";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? siteUrl).toString();
+const socialImage = new URL(image, Astro.site ?? siteUrl).toString();
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Maitee Batista",
+	url: siteUrl,
+	image: socialImage,
+	jobTitle: "UI/UX Designer",
+	description,
+	address: {
+		"@type": "PostalAddress",
+		addressLocality: "Santo Domingo",
+		addressCountry: "DO",
+	},
+	sameAs: ["https://www.linkedin.com/in/maitee-batista/"],
+	knowsAbout: [
+		"UI Design",
+		"UX Design",
+		"User Experience",
+		"User Interface",
+		"Branding",
+		"Visual Identity",
+		"Web Design",
+		"Design Systems",
+		"Figma",
+		"Framer",
+	],
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: "Maitee Batista — UI/UX Designer",
+	url: siteUrl,
+	inLanguage: "en",
+};
 ---
 
 <!doctype html>
 <html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>Maitee Batista - UI/UX Designer</title>
-		<meta
-			name="description"
-			content="UI/UX Designer creating intuitive and beautiful digital experiences."
-		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="author" content="Maitee Batista" />
 		<meta
 			name="keywords"
-			content="UI/UX Designer, Maitee Batista, UI/UX, Designer, Digital Experience, Interactive Design, User Experience, User Interface, Design, Portfolio"
+			content="UI/UX Designer, Maitee Batista, UI Designer, UX Designer, Product Designer, Web Designer, Branding, Visual Identity, Design Systems, Figma, Framer, Santo Domingo, Dominican Republic, Portfolio"
 		/>
+		<meta
+			name="robots"
+			content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+		/>
+		<meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
+		<meta name="theme-color" content="#000000" />
+		<meta name="color-scheme" content="dark" />
+		<meta name="format-detection" content="telephone=no" />
+
+		<!-- Icons -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/favicon.svg" />
+		<link rel="mask-icon" href="/favicon.svg" color="#000000" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Maitee Batista — UI/UX Designer" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:alt" content="Maitee Batista — UI/UX Designer portfolio" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImage} />
+		<meta name="twitter:image:alt" content="Maitee Batista — UI/UX Designer portfolio" />
+
+		<!-- Structured data -->
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+		<!-- Sitemap discovery -->
+		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+		<!-- Generator (kept default; helps Astro analytics) -->
+		<meta name="generator" content={Astro.generator} />
 	</head>
 	<body class="bg-black text-white">
+		<a
+			href="#main"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded"
+		>
+			Skip to main content
+		</a>
 		<slot />
 	</body>
 </html>
