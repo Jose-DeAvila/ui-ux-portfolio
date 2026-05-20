@@ -12,7 +12,7 @@ interface Props {
 const {
 	title = "Maitee Batista | UI/UX Designer in Santo Domingo, Dominican Republic",
 	description = "Maitee Batista is a UI/UX designer based in Santo Domingo, Dominican Republic, crafting intuitive interfaces, brand identities, and conversion-focused digital experiences for purpose-driven brands.",
-	image = "/og-image.png",
+	image = "/og-image.jpg",
 	canonical,
 	noindex = false,
 } = Astro.props;
@@ -94,6 +94,10 @@ const websiteSchema = {
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:image" content={socialImage} />
+		<meta property="og:image:secure_url" content={socialImage} />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="Maitee Batista — UI/UX Designer portfolio" />
 		<meta property="og:locale" content="en_US" />
 
