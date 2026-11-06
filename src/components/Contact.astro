@@ -1,0 +1,62 @@
+<section class="contact-section reveal" id="contacto">
+	<div class="contact-card-container">
+		<div class="contact-intro">
+			<h2>Envíame una lechuza (o un correo) 🦉💌</h2>
+			<p>
+				Transformemos juntos tus ideas en soluciones digitales intuitivas, funcionales y estéticamente cautivadoras.
+				¡Escríbeme y hagamos magia!
+			</p>
+			<div class="email-display">📍 Santo Domingo, República Dominicana</div>
+		</div>
+		<div class="contact-form-wrapper">
+			<form class="kawaii-form" id="contactForm">
+				<div class="form-row">
+					<div class="form-group">
+						<label for="contact-name">Tu Nombre</label>
+						<input
+							id="contact-name"
+							name="name"
+							type="text"
+							placeholder="Ej. Camila Santos"
+							autocomplete="name"
+							maxlength="100"
+							required
+						/>
+					</div>
+					<div class="form-group">
+						<label for="contact-email">Tu Correo</label>
+						<input
+							id="contact-email"
+							name="email"
+							type="email"
+							placeholder="hola@tuempresa.com"
+							autocomplete="email"
+							maxlength="254"
+							required
+						/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="contact-message">Cuéntame sobre tu proyecto</label>
+					<textarea
+						id="contact-message"
+						name="message"
+						placeholder="¿Qué reto digital o idea quieres transformar?"
+						rows="4"
+						maxlength="5000"
+						required></textarea>
+				</div>
+				<div class="form-honeypot" aria-hidden="true">
+					<label for="contact-website">No completar</label>
+					<input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+				</div>
+				<p class="form-status" id="contact-status" role="status" aria-live="polite" aria-atomic="true"></p>
+				<button type="submit" class="btn btn-primary btn-full">Enviar Mensaje Mágico ✨ (Alohomora)</button>
+			</form>
+		</div>
+	</div>
+</section>
+
+<script>
+	import "../scripts/contact-form";
+</script>

@@ -1,74 +1,8 @@
----
-import Image from "astro/components/Image.astro";
-import MaiLogo from "../assets/maii.png";
----
-
-<footer id="contact" class="bg-black">
-  <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <div class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
-      <div
-        class="w-full lg:w-2/3 text-center lg:text-left flex flex-col items-center lg:items-start"
-      >
-        <h2
-          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3 leading-tight"
-        >
-          WE CREATE INCREDIBLE EXPERIENCES TOGETHER
-        </h2>
-        <p
-          class="text-lg md:text-xl lg:text-2xl w-full lg:w-3/4 mb-6 leading-relaxed"
-        >
-          Let's transform your ideas together into intuitive, functional, and
-          aesthetically captivating digital solutions.
-        </p>
-		<div class="flex items-center gap-12">
-			<a
-			  href="#contact"
-			  class="text-base md:text-lg lg:text-[20px] text-black bg-white py-3 px-6 md:py-4 md:px-8 rounded-2xl hover:scale-105 transition-transform block w-fit font-bold"
-			>
-			  Contact Now
-			</a>
-			<a
-				class="underline text-sm md:text-base lg:text-lg"
-				href="https://www.linkedin.com/in/maitee-batista/"
-				target="_blank"
-				rel="noopener noreferrer me"
-				aria-label="Maitee Batista on LinkedIn (opens in a new tab)"
-			>LinkedIn</a>
-		</div>
-      </div>
-      <div class="w-full lg:w-1/3 flex justify-center lg:justify-end">
-        <Image
-          src={MaiLogo}
-          class="logotype object-contain"
-          alt="Maitee Batista logo"
-        />
-      </div>
-    </div>
-  </div>
+<footer class="cute-footer">
+	<p>Diseñado con toques de varita, píxeles y <em>travesura realizada</em> por <strong>Maitee Batista</strong> 🪄</p>
+	<div class="footer-socials">
+		<a href="https://www.linkedin.com/in/maitee-batista/" target="_blank" rel="noopener">LinkedIn</a>
+		<a href="#inicio">Volver arriba ↑</a>
+	</div>
+	<p class="footer-date">© 2026 Maitee Batista — Santo Domingo, R.D.</p>
 </footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const animationClass = ["animate-fade-in-left", "animate-delay-500"];
-    const elementToAnimate = document.querySelector(".logotype");
-
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px 0px 0px",
-      treshold: 0.1,
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const element = entry.target;
-          element.classList.add(...animationClass);
-
-          observer.unobserve(element);
-        }
-      });
-    }, observerOptions);
-
-    elementToAnimate && observer.observe(elementToAnimate);
-  });
-</script>

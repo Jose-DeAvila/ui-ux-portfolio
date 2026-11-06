@@ -1,173 +1,26 @@
 ---
-import Image from "astro/components/Image.astro";
-import Street from "../assets/street.jpeg";
-import Library from "../assets/library.jpg";
-import Tapes from "../assets/tapes.jpg";
-import OldTapes from "../assets/old-tapes.jpg";
+import SectionHeader from "./SectionHeader.astro";
+import { processSteps } from "../data/content";
 ---
 
-<section
-	class="py-12 md:py-16 lg:py-20 bg-black max-w-full mx-auto px-4 sm:px-6 lg:px-8"
->
-	<div class="uppercase text-center mb-8 md:mb-12">
-		<h2
-			class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6"
-		>
-			The creative process
-		</h2>
-		<h3
-			class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold leading-relaxed"
-		>
-			Where strategy meets creativity for exceptional results
-		</h3>
-	</div>
-
-	<!-- Step 1 -->
-	<div
-		class="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12"
-	>
-		<Image
-			src={Street}
-			class="object-cover w-full lg:w-1/2 rounded-2xl h-48 md:h-64 lg:h-auto"
-			widths={[400, 700, 1000]}
-			sizes="(min-width: 1024px) 50vw, 100vw"
-			alt="A painting of a vibrant streetscape full of signs and storefronts, symbolizing the Planning and Discovery phase, which involves observing and analyzing the environment to gather key information."
-		/>
-		<div class="w-full lg:w-1/2">
-			<p class="text-xl md:text-2xl font-bold mb-3 md:mb-4" aria-hidden="true">01</p>
-			<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-				PLANNING AND DISCOVERY
-			</h3>
-			<p
-				class="text-sm md:text-base lg:text-lg xl:text-[20px] mb-4 leading-relaxed"
-			>
-				Before starting, we delve into your needs. We explore your
-				goals, the problem we're seeking to solve, and the desired
-				impact of your new design. This step is critical to ensure we're
-				aligned and that I can offer you the most effective solution.
-			</p>
-			<ul
-				class="list-disc pl-6 md:pl-8 text-sm md:text-base lg:text-lg xl:text-[20px] space-y-2"
-			>
-				<li>
-					We get to know each other better and establish a connection.
+<section class="process-section reveal" id="proceso">
+	<SectionHeader
+		tag="✦ Estrategia & Creatividad ✦"
+		title="Mi Proceso de Trabajo"
+		subtitle="Donde la estrategia se encuentra con la creatividad para lograr resultados excepcionales."
+		subtitleClass="process-subtitle"
+	/>
+	<ol class="process-flow" aria-label="Etapas de mi proceso de diseño">
+		{
+			processSteps.map((step, index) => (
+				<li class={`process-step ${step.className}`}>
+					<span class="process-marker">{String(index + 1).padStart(2, "0")}</span>
+					<div class="process-copy">
+						<h3>{step.title}</h3>
+						<p>{step.description}</p>
+					</div>
 				</li>
-				<li>We identify how I can best support you.</li>
-				<li>
-					We thoroughly understand the project's goals and vision.
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- Step 2 -->
-	<div
-		class="flex flex-col lg:flex-row-reverse gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12"
-	>
-		<Image
-			src={Library}
-			class="object-cover w-full lg:w-1/2 rounded-2xl h-48 md:h-64 lg:h-auto"
-			widths={[400, 700, 1000]}
-			sizes="(min-width: 1024px) 50vw, 100vw"
-			alt="An illustrated library packed with bookshelves and study tables, representing the Concept and Strategy phase: research, analysis, and shaping the creative direction of a design project."
-		/>
-		<div class="w-full lg:w-1/2">
-			<p class="text-xl md:text-2xl font-bold mb-3 md:mb-4" aria-hidden="true">02</p>
-			<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-				CONCEPT AND STRATEGY
-			</h3>
-			<p
-				class="text-sm md:text-base lg:text-lg xl:text-[20px] mb-4 leading-relaxed"
-			>
-				Once your requirements and goals are defined, we move on to the
-				conceptualization and strategy phase. Here, we outline the
-				overall vision and strategic approach for your design project.
-				This is the time to come up with creative and functional
-				solutions.
-			</p>
-			<ul
-				class="list-disc pl-6 md:pl-8 text-sm md:text-base lg:text-lg xl:text-[20px] space-y-2"
-			>
-				<li>Research and analysis (users, market, competition).</li>
-				<li>Development of central ideas and creative direction.</li>
-				<li>
-					Definition of information architecture and flows (if
-					applicable to digital).
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- Step 3 -->
-	<div
-		class="flex flex-col lg:flex-row gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12"
-	>
-		<Image
-			src={Tapes}
-			class="object-cover w-full lg:w-1/2 rounded-2xl h-48 md:h-64 lg:h-auto"
-			widths={[400, 700, 1000]}
-			sizes="(min-width: 1024px) 50vw, 100vw"
-			alt="A stack of colorful cassette tapes lined up, symbolizing the Design and Development phase: iterating, refining, and assembling the visual and functional pieces of a project."
-		/>
-		<div class="w-full lg:w-1/2">
-			<p class="text-xl md:text-2xl font-bold mb-3 md:mb-4" aria-hidden="true">03</p>
-			<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-				DESIGN AND DEVELOPMENT
-			</h3>
-			<p
-				class="text-sm md:text-base lg:text-lg xl:text-[20px] mb-4 leading-relaxed"
-			>
-				With a clear strategy, we transform the concept into reality.
-				This phase involves the visual and functional execution of the
-				design, working on every detail to ensure the final result is
-				exceptional and meets the stated objectives.
-			</p>
-			<ul
-				class="list-disc pl-6 md:pl-8 text-sm md:text-base lg:text-lg xl:text-[20px] space-y-2"
-			>
-				<li>
-					Creation of visual elements (graphics, illustrations, UI)
-				</li>
-				<li>Development of prototypes and mockups (if applicable).</li>
-				<li>Iteration and refinement based on feedback.</li>
-			</ul>
-		</div>
-	</div>
-
-	<!-- Step 4 -->
-	<div
-		class="flex flex-col lg:flex-row-reverse gap-6 md:gap-8 lg:gap-12 items-center mb-8 md:mb-12"
-	>
-		<Image
-			src={OldTapes}
-			class="object-cover w-full lg:w-1/2 rounded-2xl h-48 md:h-64 lg:h-auto"
-			widths={[400, 700, 1000]}
-			sizes="(min-width: 1024px) 50vw, 100vw"
-			alt="Worn vintage tapes arranged for playback, representing the Implementation and Optimization phase: launching the finished design and fine-tuning its performance in the real world."
-		/>
-		<div class="w-full lg:w-1/2">
-			<p class="text-xl md:text-2xl font-bold mb-3 md:mb-4" aria-hidden="true">04</p>
-			<h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4">
-				IMPLEMENTATION AND OPTIMIZATION
-			</h3>
-			<p
-				class="text-sm md:text-base lg:text-lg xl:text-[20px] mb-4 leading-relaxed"
-			>
-				Once the design is finalized and approved, we focus on its
-				proper implementation and ensuring optimal performance. My work
-				isn't done until your design is live and functioning
-				effectively, ready to impact your audience.
-			</p>
-			<ul
-				class="list-disc pl-6 md:pl-8 text-sm md:text-base lg:text-lg xl:text-[20px] space-y-2"
-			>
-				<li>Preparation of final files and specifications.</li>
-				<li>Advice for implementation (if applicable).</li>
-				<li>
-					Evaluation and possible post-launch adjustments for
-					optimization.
-				</li>
-			</ul>
-		</div>
-	</div>
+			))
+		}
+	</ol>
 </section>
