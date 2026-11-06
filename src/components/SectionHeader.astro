@@ -1,0 +1,16 @@
+---
+interface Props {
+	tag: string;
+	title: string;
+	subtitle: string;
+	subtitleClass?: string;
+}
+
+const { tag, title, subtitle, subtitleClass = "about-subtitle" } = Astro.props;
+---
+
+<div class="section-header">
+	<span class="section-tag">{tag}</span>
+	<h2 class="section-title">{title}</h2>
+	<p class={subtitleClass}>{subtitle}</p>
+</div>

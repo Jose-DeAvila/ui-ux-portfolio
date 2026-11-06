@@ -1,123 +1,46 @@
 ---
-import Image from "astro/components/Image.astro";
-import SetupImage from "../assets/setup.jpg";
+import { Image } from "astro:assets";
+import { heroPills } from "../data/content";
+import avatar from "../assets/portfolio/foto_perfil.png";
 ---
 
-<section
-	class="bg-black mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:pt-12 md:pb-16 lg:pt-16 lg:pb-20"
->
-	<div class="flex flex-col lg:flex-row lg:justify-between mb-6 lg:mb-8">
-		<div class="w-full lg:w-1/2 mb-6 lg:mb-0">
-			<p class="my-3 text-sm md:text-base">
-				EVERY PROJECT STARTS WITH A GOOD IDEA
-			</p>
-			<h1
-				class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight"
-			>
-				UI/UX <span class="designer-text">DESIGNER</span>
-			</h1>
-		</div>
-		<div
-			class="w-full lg:w-1/2 uppercase flex flex-col lg:align-bottom lg:justify-between"
-		>
-			<div class="w-full lg:w-3/4 lg:self-end mb-6 lg:mb-0">
-				<p class="text-base md:text-lg lg:text-xl mb-4">
-					I design authentic brands and functional interfaces with
-					intention.
-				</p>
-				<p class="text-base md:text-lg lg:text-xl">
-					Every project is an opportunity to connect ideas with people
-					through clear, aesthetic, and memorable digital experiences.
-				</p>
+<section class="hero-section" id="inicio">
+	<div class="hero-container">
+		<div class="hero-content">
+			<div class="status-badge">
+				<span class="badge-icon">📍</span> Santo Domingo, R.D. · Disponible para proyectos
 			</div>
-			<a
-				href="#projects"
-				class="self-start lg:self-end underline text-sm md:text-base lg:mr-8"
-				>See all projects</a
-			>
+			<h1>Todo proyecto inicia con una <span class="highlight-name">buena idea</span> ✨</h1>
+			<p class="hero-lead">
+				Diseño marcas auténticas e interfaces funcionales con intención. Cada proyecto es una oportunidad para conectar
+				ideas con personas a través de experiencias digitales claras, estéticas y memorables.
+			</p>
+			<div class="hero-actions">
+				<a href="#proyectos" class="btn btn-dark">Ver proyectos &rarr;</a>
+				<a href="#contacto" class="btn btn-outline">¡Hablemos! 👋</a>
+			</div>
 		</div>
-	</div>
-	<div>
-		<Image
-			src={SetupImage}
-			class="mb-6 w-full h-auto"
-			loading="eager"
-			fetchpriority="high"
-			widths={[480, 800, 1200, 1800]}
-			sizes="(min-width: 1280px) 1200px, 100vw"
-			alt="Minimalist UI/UX designer workspace with a MacBook on a wooden desk, an indoor plant, and soft natural light from the window."
-		/>
-		<p class="flex flex-col gap-2 text-sm md:text-base lg:text-lg">
-			<span class="font-black"
-				>Strategic design for purpose-driven brands and real users.
-			</span>
-			<span
-				>Clean, intuitive, and visually compelling digital experiences.
-			</span>
-		</p>
+
+		<div class="hero-visual">
+			<span class="decor-star">★</span>
+			<div class="hero-image-wrapper">
+				<Image
+					src={avatar}
+					alt="Maitee Batista - Diseñadora UI/UX"
+					class="hero-avatar"
+					widths={[400, 800]}
+					sizes="(max-width: 768px) 80vw, 400px"
+					loading="eager"
+				/>
+			</div>
+
+			{
+				heroPills.map((pill) => (
+					<div class={`floating-pill ${pill.className}`}>
+						<span class={`pill-dot ${pill.dot}`} /> {pill.label}
+					</div>
+				))
+			}
+		</div>
 	</div>
 </section>
-
-<style>
-	.designer-text {
-		position: relative;
-		z-index: 1;
-	}
-
-	.designer-text::after {
-		content: "";
-		position: absolute;
-		top: 4px;
-		right: -8px;
-		width: 32px;
-		height: 32px;
-		background-color: var(--color-big-circle);
-		border-radius: 50%;
-		z-index: -1;
-	}
-
-	.designer-text::before {
-		content: "";
-		position: absolute;
-		top: -12px;
-		right: -16px;
-		width: 16px;
-		height: 16px;
-		background-color: var(--color-small-circle);
-		border-radius: 50%;
-		z-index: -1;
-	}
-
-	/* Responsive adjustments for larger screens */
-	@media (min-width: 640px) {
-		.designer-text::after {
-			top: 6px;
-			right: -12px;
-			width: 48px;
-			height: 48px;
-		}
-
-		.designer-text::before {
-			top: -18px;
-			right: -24px;
-			width: 24px;
-			height: 24px;
-		}
-	}
-
-	@media (min-width: 1024px) {
-		.designer-text::after {
-			top: 8px;
-			right: -16px;
-			width: 64px;
-			height: 64px;
-		}
-
-		.designer-text::before {
-			top: -24px;
-			right: -32px;
-			width: 32px;
-			height: 32px;
-		}
-	}
-</style>

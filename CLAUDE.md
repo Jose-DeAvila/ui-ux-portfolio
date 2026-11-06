@@ -12,25 +12,27 @@ Bun is the package manager (see `bun.lock` and the deploy workflow).
 | `bun dev`       | Start dev server at `localhost:4321`          |
 | `bun build`     | Build production site to `./dist/`            |
 | `bun preview`   | Preview the production build locally          |
-| `bun astro check` | Run Astro's type/diagnostic check           |
 
 There is no test suite or linter configured.
 
 ## Architecture
 
-Single-page Astro 5 portfolio. The entry point `src/pages/index.astro` composes nine section components (`Header`, `Hero`, `Projects`, `About`, `Process`, `Motivation`, `Services`, `Stack`, `Footer`) inside `src/layouts/Layout.astro`. There are no other routes.
+Single-page Astro 5 portfolio (Spanish, "V2" magical/pastel design). `src/pages/index.astro` composes the section components (`Header`, `Hero`, `About`, `Services`, `Projects`, `Process`, `Contact`, `Footer`) inside `src/layouts/Layout.astro`. There are no other routes.
 
-**Layout.astro is the global shell.** It owns:
+- **Layout.astro** owns the `<head>` (SEO, Open Graph, JSON-LD, GTM, Google Fonts), renders `Background.astro` (decorative sky + sparkle container) and loads `src/scripts/effects.ts`. Edit meta tags here, not in components.
+- **Styling** is one hand-written global stylesheet, `src/styles/global.css` (plain CSS with custom properties). Tailwind is no longer used by the site.
+- **Content as data.** Repeated content lives in `src/data/content.ts` (nav, services, process steps, certifications) and `src/data/projects.ts` (projects, with imported images). Components map over these arrays.
+- **Images** are in `src/assets/portfolio/` and rendered with `astro:assets` `<Image>`. `public/` holds `favicon.svg`, `og-image.jpg`, `robots.txt`.
+- **Scroll reveal:** sections with class `reveal` start hidden and get `active` from `effects.ts` when scrolled into view.
 
-- The `<head>` (title, meta description/keywords, favicon) — edit it here, not in components.
-- Tailwind v4 setup via `@import "tailwindcss"` plus `@plugin "@midudev/tailwind-animations"`, and the `@theme` block defining `--font-sans` (Inter) and the `--color-small-circle` / `--color-big-circle` custom colors.
-- A `body { padding-top }` rule that compensates for the fixed `Header`, with breakpoints at 640px and 1024px. If header height changes, update these.
-- An `IntersectionObserver` script that adds `animate-fade-in-up` to every `<section>` as it enters the viewport. **Every `<section>` starts at `opacity: 0`** — any new section must either be a `<section>` (so the observer reveals it) or use a different tag, otherwise it will be invisible.
+## Contact form
 
-**Styling.** Tailwind v4 is wired through the Vite plugin (`@tailwindcss/vite`) in `astro.config.mjs`; there is no `tailwind.config.*` file — theme tokens live in the `@theme` block inside `Layout.astro`.
+`Contact.astro` + `src/scripts/contact-form.ts` POST JSON to `<contact-api-base>/api/contact`. The base URL comes from `src/config.ts` (`CONTACT_API_BASE`, overridable with the `PUBLIC_CONTACT_API_URL` env var at build time) and is exposed through `<meta name="contact-api-base">`.
 
-**Site config.** `astro.config.mjs` sets `site: "https://maiteebatista.site"` and `base: "/"`. The site is deployed to GitHub Pages via `.github/workflows/deploy.yml` (uses `withastro/action@v3` with `bun@latest`) on every push to `main`.
+The backend is **not in this repo**: it is a Vercel serverless function (`api/contact.js`, sends mail via Resend) deployed from the separate `~/Desktop/mi-portafolio` project (Vercel project `mi-portafolio`). Its `ALLOWED_ORIGINS` env var must include `https://maiteebatista.site` for CORS.
 
-**Assets.** Images and SVGs in `src/assets/` are imported by components and processed by Astro's asset pipeline. `public/` only holds `favicon.svg` (served as-is at the site root).
+## Site config
+
+`astro.config.mjs` sets `site: "https://maiteebatista.site"` and `base: "/"`. The site is deployed to GitHub Pages via `.github/workflows/deploy.yml` (`withastro/action@v3` with `bun@latest`) on every push to `main`.
 
 **TypeScript.** Extends `astro/tsconfigs/strict`.

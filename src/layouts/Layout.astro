@@ -1,6 +1,7 @@
 ---
-import "@fontsource/inter";
-import interLatin400 from "@fontsource/inter/files/inter-latin-400-normal.woff2?url";
+import "../styles/global.css";
+import Background from "../components/Background.astro";
+import { CONTACT_API_BASE } from "../config";
 
 interface Props {
 	title?: string;
@@ -11,8 +12,8 @@ interface Props {
 }
 
 const {
-	title = "Maitee Batista | UI/UX Designer in Santo Domingo, Dominican Republic",
-	description = "Maitee Batista is a UI/UX designer based in Santo Domingo, Dominican Republic, crafting intuitive interfaces, brand identities, and conversion-focused digital experiences for purpose-driven brands.",
+	title = "Maitee Batista — Diseñadora UI/UX en Santo Domingo, República Dominicana ✨",
+	description = "Portafolio de Maitee Batista, diseñadora UI/UX en Santo Domingo. Interfaces intuitivas, identidad de marca y diseño web enfocado en conversión. Proyectos en Figma y Framer.",
 	image = "/og-image.jpg",
 	canonical,
 	noindex = false,
@@ -55,16 +56,17 @@ const websiteSchema = {
 	"@type": "WebSite",
 	name: "Maitee Batista — UI/UX Designer",
 	url: siteUrl,
-	inLanguage: "en",
+	inLanguage: "es",
 };
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="contact-api-base" content={CONTACT_API_BASE} />
 
 		<!-- Google Tag Manager -->
 		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -80,7 +82,7 @@ const websiteSchema = {
 		<meta name="author" content="Maitee Batista" />
 		<meta
 			name="keywords"
-			content="UI/UX Designer, Maitee Batista, UI Designer, UX Designer, Product Designer, Web Designer, Branding, Visual Identity, Design Systems, Figma, Framer, Santo Domingo, Dominican Republic, Portfolio"
+			content="UI/UX Designer, Maitee Batista, Diseñadora UI/UX, UI Designer, UX Designer, Product Designer, Web Designer, Branding, Identidad Visual, Design Systems, Figma, Framer, Santo Domingo, República Dominicana, Portafolio"
 		/>
 		<meta
 			name="robots"
@@ -88,12 +90,16 @@ const websiteSchema = {
 		/>
 		<meta name="googlebot" content={noindex ? "noindex, nofollow" : "index, follow"} />
 		<meta name="google-site-verification" content="ZePascxh616qvkZRje9UcNOpqBD3et8VQlsQJngOYOs" />
-		<meta name="theme-color" content="#000000" />
-		<meta name="color-scheme" content="dark" />
+		<meta name="theme-color" content="#fffbf7" />
 		<meta name="format-detection" content="telephone=no" />
 
-		<!-- Preload primary font to collapse HTML → CSS → font critical chain -->
-		<link rel="preload" href={interLatin400} as="font" type="font/woff2" crossorigin="anonymous" />
+		<!-- Fuentes: Fredoka para títulos y Quicksand para lectura suave -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 
 		<!-- Icons -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -111,15 +117,15 @@ const websiteSchema = {
 		<meta property="og:image:type" content="image/jpeg" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Maitee Batista — UI/UX Designer portfolio" />
-		<meta property="og:locale" content="en_US" />
+		<meta property="og:image:alt" content="Maitee Batista — Portafolio de diseñadora UI/UX" />
+		<meta property="og:locale" content="es_DO" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={socialImage} />
-		<meta name="twitter:image:alt" content="Maitee Batista — UI/UX Designer portfolio" />
+		<meta name="twitter:image:alt" content="Maitee Batista — Portafolio de diseñadora UI/UX" />
 
 		<!-- Structured data -->
 		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
@@ -128,108 +134,24 @@ const websiteSchema = {
 		<!-- Sitemap discovery -->
 		<link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
-		<!-- Generator (kept default; helps Astro analytics) -->
 		<meta name="generator" content={Astro.generator} />
 	</head>
-	<body class="bg-black text-white">
+	<body>
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKNXR89K"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-NKNXR89K"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe></noscript
+		>
 		<!-- End Google Tag Manager (noscript) -->
 
-		<a
-			href="#main"
-			class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded"
-		>
-			Skip to main content
-		</a>
+		<Background />
 		<slot />
+
+		<script>
+			import "../scripts/effects";
+		</script>
 	</body>
 </html>
-
-<style is:global>
-	@import "tailwindcss";
-	@plugin "@midudev/tailwind-animations";
-
-	@theme {
-		--font-sans: "Inter", sans-serif;
-		--color-small-circle: #95d5e7;
-		--color-big-circle: #95e7d7;
-	}
-
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		line-height: 1.2;
-	}
-
-	/* Add padding-top to body to compensate for fixed header */
-	body {
-		padding-top: 100px; /* Compensate for header height */
-	}
-
-	/* Responsive padding for different screen sizes */
-	@media (max-width: 640px) {
-		body {
-			padding-top: 90px; /* Mobile header is slightly shorter */
-		}
-	}
-
-	@media (min-width: 641px) and (max-width: 1024px) {
-		body {
-			padding-top: 95px; /* Tablet padding */
-		}
-	}
-
-	@media (min-width: 1025px) {
-		body {
-			padding-top: 100px; /* Desktop padding */
-		}
-	}
-
-	section {
-		opacity: 0;
-	}
-
-	/* Ensure first section has proper spacing */
-	section:first-of-type {
-		margin-top: 0 !important;
-	}
-
-	/* Ensure dark mode is applied globally */
-	.dark {
-		color-scheme: dark;
-	}
-</style>
-
-<script>
-	const animationClass = "animate-fade-in-up";
-
-	document.addEventListener("DOMContentLoaded", () => {
-		const elementsToAnimate = document.querySelectorAll("section");
-
-		const observerOptions = {
-			root: null,
-			rootMargin: "-10% 0px 0px 0px", // Usar porcentajes también funciona y es más adaptable
-			threshold: 0.1,
-		};
-
-		const observer = new IntersectionObserver((entries, observer) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					const element = entry.target;
-
-					element.classList.add(animationClass);
-
-					observer.unobserve(element);
-				}
-			});
-		}, observerOptions);
-
-		elementsToAnimate.forEach((element) => {
-			observer.observe(element);
-		});
-	});
-</script>
