@@ -421,6 +421,11 @@ h3 {
     color: var(--pastel-pink-dark);
 }
 
+/* Compensa el header fijo al navegar por anclas para que el título no quede tapado. */
+section[id] {
+    scroll-margin-top: 110px;
+}
+
 /* ========================================================
    HERO
    ======================================================== */
@@ -590,6 +595,7 @@ h3 {
     transition: all 0.25s ease;
     cursor: pointer;
     border: none;
+    font-family: inherit;
 }
 
 .btn-primary {

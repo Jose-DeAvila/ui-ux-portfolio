@@ -3,10 +3,126 @@ import { navLinks } from "../data/content";
 ---
 
 <header class="main-header">
-	<nav class="navbar">
+	<nav class="navbar" aria-label="Navegación principal">
 		<div class="logo">🌸 <span class="brand-name">Maitee Batista</span></div>
-		<ul class="nav-links">
+		<button
+			class="nav-toggle"
+			type="button"
+			aria-expanded="false"
+			aria-controls="nav-links"
+			aria-label="Abrir menú"
+		>
+			<span class="nav-toggle-bar" aria-hidden="true"></span>
+			<span class="nav-toggle-bar" aria-hidden="true"></span>
+			<span class="nav-toggle-bar" aria-hidden="true"></span>
+		</button>
+		<ul class="nav-links" id="nav-links">
 			{navLinks.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
 		</ul>
 	</nav>
 </header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+	const navbar = document.querySelector<HTMLElement>(".navbar");
+
+	if (toggle && navbar) {
+		const setOpen = (open: boolean): void => {
+			navbar.classList.toggle("is-open", open);
+			toggle.setAttribute("aria-expanded", String(open));
+			toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+		};
+
+		toggle.addEventListener("click", () => setOpen(!navbar.classList.contains("is-open")));
+
+		// Cerrar al elegir una sección, con Escape o al tocar fuera del menú.
+		navbar.querySelectorAll(".nav-links a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape" && navbar.classList.contains("is-open")) {
+				setOpen(false);
+				toggle.focus();
+			}
+		});
+		document.addEventListener("click", (e) => {
+			if (!navbar.contains(e.target as Node)) setOpen(false);
+		});
+	}
+</script>
+
+<style>
+	.nav-toggle {
+		display: none;
+	}
+
+	@media (max-width: 720px) {
+		.navbar {
+			flex-wrap: wrap;
+			border-radius: 28px;
+		}
+
+		.nav-toggle {
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 5px;
+			width: 44px;
+			height: 44px;
+			padding: 0 11px;
+			border: none;
+			border-radius: 50%;
+			background: var(--pastel-pink);
+			cursor: pointer;
+		}
+
+		.nav-toggle:focus-visible {
+			outline: 2px solid #c86b85;
+			outline-offset: 2px;
+		}
+
+		.nav-toggle-bar {
+			display: block;
+			height: 2px;
+			border-radius: 2px;
+			background: var(--text-main);
+			transition: transform 0.25s ease, opacity 0.2s ease;
+		}
+
+		.navbar.is-open .nav-toggle-bar:nth-child(1) {
+			transform: translateY(7px) rotate(45deg);
+		}
+
+		.navbar.is-open .nav-toggle-bar:nth-child(2) {
+			opacity: 0;
+		}
+
+		.navbar.is-open .nav-toggle-bar:nth-child(3) {
+			transform: translateY(-7px) rotate(-45deg);
+		}
+
+		.nav-links {
+			display: none;
+			flex-basis: 100%;
+			flex-direction: column;
+			gap: 0;
+			margin: 0;
+			padding: 8px 0 4px;
+		}
+
+		.navbar.is-open .nav-links {
+			display: flex;
+		}
+
+		.nav-links a {
+			display: block;
+			padding: 12px 8px;
+			font-size: 1rem;
+			border-top: 1px solid var(--pastel-pink);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.nav-toggle-bar {
+			transition: none;
+		}
+	}
+</style>
